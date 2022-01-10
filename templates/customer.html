@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>customer page</title>
+</head>
+<body>
+    <!----- Message-Alert ----->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <h1> hello {{ user.username }} your role is cutomer</h1>
+
+
+    <script>
+        setTimeout(function(){
+          if ($('#msg').length > 0) {
+            $('#msg').remove();
+          }
+        }, 5000)
+    </script>
+</body>
+</html>

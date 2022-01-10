@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Products</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+
+</head>
+
+<body>
+
+  <div class="site-wrap">
+
+
+    <div class="site-navbar py-2">
+
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="{% url 'search' %}" method="GET">
+            <input type="text" name="query" id="query" list="medicines" class="form-control"
+                   placeholder="Search keyword and hit enter...">
+              <datalist id="medicines">
+              {% for product in products %}
+                  <option value="{{ product.name }}"></option>
+              {% endfor %}
+              </datalist>
+
+          </form>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="{% url 'home' %}" class="js-logo-clone"><strong class="text-primary">E</strong>shop</a>
+            </div>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active"><a href="{% url 'products' %}">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
+                class="icon-menu"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Products</strong></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+            {% for product in products %}
+              <div class="col-sm-6 col-lg-4 text-center item mb-4 item-v2">
+              {% if product.new_product %}
+                <span class="onsale">New</span>
+                  {% endif %}
+                  <a href="{{ product.slug }}"> <img src="{{ product.image.url }}" alt="Image" height="250px" width="250px"></a>
+                  <h3 class="text-dark"><a href="shop-single.html">{{ product.name }}</a></h3>
+                  <p class="price">
+                    <p class="price">BDT.{{ product.price }}</p>
+                  </p>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+    <footer class="site-footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+
+            <div class="block-7">
+              <h3 class="footer-heading mb-4">About <strong class="text-primary">eShop</strong></h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quae reiciendis distinctio voluptates
+                sed dolorum excepturi iure eaque, aut unde.</p>
+            </div>
+
+          </div>
+          <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">Navigation</h3>
+            <ul class="list-unstyled">
+              <li><a href="#">Supplements</a></li>
+              <li><a href="#">Vitamins</a></li>
+              <li><a href="#">Diet &amp; Nutrition</a></li>
+              <li><a href="#">Tea &amp; Coffee</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="block-5 mb-5">
+              <h3 class="footer-heading mb-4">Contact Info</h3>
+              <ul class="list-unstyled">
+                <li class="address">8/4 Shukrabad, Dhanmondi, Dhaka, Bangladesh</li>
+                <li class="phone"><a href="tel://23923929210">+88 01786 159869</a></li>
+                <li class="email">eshop@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
