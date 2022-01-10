@@ -35,7 +35,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None and user.is_admin:
                 login(request, user)
-                return redirect('adminpage')
+                return redirect('home')
             elif user is not None and user.is_customer:
                 login(request, user)
                 messages.success(request, 'You login successfully!!! ')
